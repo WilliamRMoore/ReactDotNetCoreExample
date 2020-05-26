@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -25,6 +21,7 @@ namespace API
                 {
                     var context = Services.GetRequiredService<DataContext>();
                     context.Database.Migrate(); //runs any pending database migrations, will also create a Db if one does not exist.
+                    Seed.SeedData(context);
                 }
                 catch (Exception ex)
                 {

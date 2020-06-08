@@ -35,12 +35,11 @@ namespace Application.Activities
                     throw new Exception("Could not find activity");
 
                 activity.Title = request.Title ?? activity.Title;
-                activity.Description = request.Title ?? activity.Description;
-                activity.Category = request.Title ?? activity.Category;
+                activity.Description = request.Description ?? activity.Description;
+                activity.Category = request.Category ?? activity.Category;
                 activity.Date = request.Date ?? activity.Date;
-                activity.City = request.Title ?? activity.City;
-                activity.Venue = request.Title ?? activity.Venue;
-
+                activity.City = request.City ?? activity.City;
+                activity.Venue = request.Venue ?? activity.Venue;
                 var success = await _context.SaveChangesAsync() > 0;
 
                 if (success) return Unit.Value;
